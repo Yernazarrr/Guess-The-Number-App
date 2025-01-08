@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # guess_the_number
 
 A new Flutter project.
@@ -14,3 +15,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Guess-The-Number-App
+Guess The Number App on Dart/Flutter
+
+# Screenshots
+>>>>>>> 1234b2abdb43a5a4ec24ce95ff61df334430f2c0
