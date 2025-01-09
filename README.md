@@ -21,7 +21,7 @@ Guess The Number App on Dart/Flutter
 ### 1. Клонируйте репозиторий
 
 Сначала клонируйте репозиторий на свою машину:
-git clone https://github.com/ваш-репозиторий/название-проекта.git
+git clone https://github.com/Yernazarrr/Guess-The-Number-App.git
 
 ### 2. Перейдите в каталог проекта
 Перейдите в папку проекта:
