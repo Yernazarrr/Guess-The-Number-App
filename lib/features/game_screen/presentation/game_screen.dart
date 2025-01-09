@@ -67,22 +67,25 @@ class _GameScreenState extends State<GameScreen> {
 
   // Метод для старта игры
   void _startGame() {
-    if (_maxRange != null && _maxAttempts != null) {
-      _logger.i(
-        'Игра началась с диапазоном: $_maxRange и попытками: $_maxAttempts',
-      );
-
-      BlocProvider.of<GameBloc>(context).add(
-        GenerateRandomNumberEvent(
-          maxRange: _maxRange ??
-              0, // Если _maxRange равен null, ставим значение по умолчанию
-          maxAttempts: _maxAttempts ??
-              0, // Если _maxAttempts равен null, ставим значение по умолчанию
-        ),
-      );
-    } else {
-      _showError('Диапазон или количество попыток не могут быть null');
+    if (_maxRange == null || _maxRange! <= 0) {
+      _showError('Диапазон должен быть больше 0');
+      return;
     }
+    if (_maxAttempts == null || _maxAttempts! <= 0) {
+      _showError('Количество попыток должно быть больше 0');
+      return;
+    }
+
+    _logger.i(
+      'Игра началась с диапазоном: $_maxRange и попытками: $_maxAttempts',
+    );
+
+    BlocProvider.of<GameBloc>(context).add(
+      GenerateRandomNumberEvent(
+        maxRange: _maxRange!,
+        maxAttempts: _maxAttempts!,
+      ),
+    );
   }
 
   // Метод для рестарта игры
@@ -189,8 +192,26 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   Widget _buildErrorScreen() {
-    return Container(
-      color: Colors.red,
+    return Scaffold(
+      backgroundColor: Colors.red,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Ошибка в приложении!',
+              style: TextStyle(color: Colors.white, fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _restartGame();
+              },
+              child: const Text('Начать заново'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
